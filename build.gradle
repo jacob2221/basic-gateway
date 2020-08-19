@@ -18,7 +18,7 @@ war {
     archiveName = 'basic-gateway.war'
 }
 ext {
-	set('springCloudVersion', "Hoxton.RELEASE")
+	set('springCloudVersion', "Hoxton.SR7")
 }
    
 repositories {
