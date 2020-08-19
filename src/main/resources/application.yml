@@ -1,0 +1,23 @@
+server:
+  port: 9001    
+logging:
+  config: classpath:basic-logback.xml
+# API Routes
+spring:
+  cloud:
+    gateway:
+      httpclient:
+        ssl:
+          useInsecureTrustManager: true
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+      routes:
+      - id: apollo-data-load-msg
+        uri: http://mykullstc000093.apis.dhl.com:8001
+        predicates:
+        - Path=/lmp/data/*
+        - Method=POST
+        filters:
+        - StripPrefix=1
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+        - SecureHeaders
