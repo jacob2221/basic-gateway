@@ -1,21 +1,38 @@
 server:
-  port: 9001    
+  port: 9001   
+management:
+  endpoints:
+    web:
+      expose: '*'
+      exposure:
+         include: 'health,info,refresh'   
 logging:
   config: classpath:basic-logback.xml
+  level:
+    org:
+      springframework:
+        cloud: DEBUG
+    reactor:
+      netty: DEBUG
 # API Routes
 spring:
+  sleuth:
+    reactor:
+      decorate-on-each: false
   cloud:
     gateway:
+      httpserver:
+        wiretap: true
       httpclient:
         ssl:
           useInsecureTrustManager: true
       globalcors:
         add-to-simple-url-handler-mapping: true
       routes:
-      - id: apollo-data-load-msg
-        uri: http://mykullstc000093.apis.dhl.com:8001
+      - id: route1
+        uri: http://localhost:8001
         predicates:
-        - Path=/lmp/data/*
+        - Path=/test/data/*
         - Method=POST
         filters:
         - StripPrefix=1
