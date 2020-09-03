@@ -39,7 +39,12 @@ dependencies {
     compile ('org.springframework.cloud:spring-cloud-starter-gateway') {
 	    exclude group: 'org.springframework.boot', module: 'spring-boot-starter-web'
 	}
-	//compile ("io.projectreactor.tools:blockhound:1.0.4.RELEASE")
+	compile ("io.projectreactor.tools:blockhound:1.0.4.RELEASE")
+	compile("org.springframework.boot:spring-boot-starter-actuator")
+	compile ('org.springframework.cloud:spring-cloud-starter-sleuth')
+	compileOnly 'org.projectlombok:lombok:1.18.8'
+	//needed while building from command line
+	annotationProcessor 'org.projectlombok:lombok:1.18.8'
 }
 
 dependencyManagement {
