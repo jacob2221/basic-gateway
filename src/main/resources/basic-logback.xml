@@ -9,10 +9,10 @@
 
 	<appender name="FILE"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>/appl/lmp-services/basicgateway/logs/gateway.log</file>
+		<file>/appl/basicgateway/logs/gateway.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- daily rollover -->
-			<fileNamePattern>/appl/lmp-services/basicgateway/logs/rotated/gateway.log%d{yyyy-MM-dd}
+			<fileNamePattern>/appl/basicgateway/logs/rotated/gateway.log%d{yyyy-MM-dd}
 			</fileNamePattern>
 			<!-- keep 5 days' worth of history capped at 1GB total size -->
 			<maxHistory>5</maxHistory>
@@ -24,10 +24,10 @@
 		</encoder>
 	</appender>
 	<appender name="accessLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/appl/lmp-services/basicgateway/access_log.log</file>
+        <file>/appl/basicgateway/access_log.log</file>
          <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
                   <!-- daily rollover -->
-                  <fileNamePattern>/appl/lmp-services/basicgateway/rotated/access_log.log%d{yyyy-MM-dd}
+                  <fileNamePattern>/appl/basicgateway/rotated/access_log.log%d{yyyy-MM-dd}
                   </fileNamePattern>
                   <!-- keep 5 days' worth of history capped at 1GB total size -->
                   <maxHistory>5</maxHistory>
@@ -44,9 +44,9 @@
         <logger name="reactor.netty.http.server.AccessLog" level="INFO" additivity="false">
           <appender-ref ref="async"/>
         </logger>
-        <logger name="com.dp.juno.lite.router" level="DEBUG" />
+        <logger name="basic.gateway" level="DEBUG" />
         <logger name="reactor.netty.resources.PooledConnectionProvider" level="DEBUG" />
-        <root level="info">
+        <root level="debug">
             <appender-ref ref="FILE" />
         </root>
 
